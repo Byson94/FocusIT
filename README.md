@@ -32,7 +32,7 @@ pip install -r requirements.txt
 - If you want to run this program globally, then running the following command will make it globally accessable by calling `focusit` (make sure that the prerequisites are installed to your system to make it run)
 
 ```bash
-cp main.py /usr/local/bin/focusit
+sudo cp main.py /usr/local/bin/focusit
 ```
 
 - It copies the python script and makes it trigger when focusit is triggered.
