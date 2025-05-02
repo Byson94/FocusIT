@@ -38,7 +38,7 @@ sudo cp main.py /usr/local/bin/focusit
 After running that, run the following code so that you can call it without any permission issues.
 
 ```bash
-chmod +x /usr/local/focusit
+chmod +x /usr/local/bin/focusit
 ```
 
 - The above commands copies the python script and gives it permission to execute aswell as making it trigger when focusit is triggered.
