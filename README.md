@@ -35,4 +35,10 @@ pip install -r requirements.txt
 sudo cp main.py /usr/local/bin/focusit
 ```
 
-- It copies the python script and makes it trigger when focusit is triggered.
+After running that, run the following code so that you can call it without any permission issues.
+
+```bash
+chmod +x /usr/local/focusit
+```
+
+- The above commands copies the python script and gives it permission to execute aswell as making it trigger when focusit is triggered.
