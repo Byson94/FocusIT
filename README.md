@@ -25,6 +25,14 @@ Make sure that you have the prerequisites to run the program or else it will not
 pip install -r requirements.txt
 ```
 
+## Notes
+
 - If you are running this program locally, then make sure to run `python -m venv ./venv` to setup a virtual enviornment to install the prerequisites to.
 
-- If you want to run this program globally, then move the main.py file to `/usr/local/bin` (make sure that the prerequisites are installed to your system to make it run)
+- If you want to run this program globally, then running the following command will make it globally accessable by calling `focusit` (make sure that the prerequisites are installed to your system to make it run)
+
+```bash
+cp main.py /usr/local/bin/focusit
+```
+
+- It copies the python script and makes it trigger when focusit is triggered.
