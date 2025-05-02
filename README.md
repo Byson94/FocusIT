@@ -18,6 +18,7 @@ Make sure that you have the prerequisites to run the program or else it will not
 
 - **Prerequisites**
   - **rich**
+  - **appdirs**
 
 **Run the following command to install the prerequisites.**
 

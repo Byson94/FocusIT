@@ -3,8 +3,16 @@
 import os
 import json
 import datetime
+from appdirs import *
 from rich.console import Console
 from rich.table import Table
+
+# libs setups
+APP_NAME = "FocusIT"
+APP_AUTHOR = "Byson94"
+data_dir = user_data_dir(APP_NAME, APP_AUTHOR)
+session_file_path = os.path.join(data_dir, "session.json")
+os.makedirs(data_dir, exist_ok=True)
 console = Console()
 
 os.system("clear")
@@ -41,9 +49,9 @@ def start_main():
     SESSION_LIST = False
 
 def getSessionData():
-    if not os.path.exists("session.json"):
+    if not os.path.exists(session_file_path):
         return []
-    with open("session.json", "r") as data_file:
+    with open(session_file_path, "r") as data_file:
         content = data_file.read()
         if content.strip():
             return json.loads(content)
@@ -53,11 +61,11 @@ def getSessionData():
 def saveSessionData(data):
     prev_data = getSessionData()
     prev_data.append(data)
-    with open("session.json", "w") as data_file:
+    with open(session_file_path, "w") as data_file:
         json.dump(prev_data, data_file, indent=4)
 
 def overwriteSessionData(new_data):
-    with open("session.json", "w") as data_file:
+    with open(session_file_path, "w") as data_file:
         json.dump(new_data, data_file, indent=4)
 
 
