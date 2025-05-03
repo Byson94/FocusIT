@@ -44,6 +44,8 @@ def start_list():
 
 def start_main():
     global SESSION_SAVE, MAIN, SESSION_LIST
+    os.system("clear")
+    listActions()
     MAIN = True
     SESSION_SAVE = False
     SESSION_LIST = False
@@ -100,49 +102,58 @@ while MAIN == True:
     else:
         console.print("Requested command not found.", style="bold red")
 
-# recording session
-while SESSION_SAVE == True:
-    print("Give your session a name:")
-    session_name = input()
+    # recording session
+    while SESSION_SAVE == True:
+        print("Give your session a name:")
+        session_name = input()
 
-    if session_name:
-        start_time = datetime.datetime.now()
-        print("Press enter when you are done.")
-        event_listener = input()
+        if session_name:
+            start_time = datetime.datetime.now()
+            print("Press enter when you are done.")
+            event_listener = input()
 
-        if event_listener or event_listener == "":
-            end_time = datetime.datetime.now()
+            if event_listener or event_listener == "":
+                end_time = datetime.datetime.now()
 
-            sessionDataRecorded = {
-                "start": start_time.isoformat(),
-                "end": end_time.isoformat(),
-                "label": session_name
-            }
-            saveSessionData(sessionDataRecorded)
-            start_main()
-    
-# list all weekly session inference
-while SESSION_LIST == True:
-    os.system("clear")
+                sessionDataRecorded = {
+                    "start": start_time.isoformat(),
+                    "end": end_time.isoformat(),
+                    "label": session_name
+                }
+                saveSessionData(sessionDataRecorded)
+                start_main()
 
-    table = Table(title="User weekly performance")
-    table.add_column("Date", justify="right", style="cyan", no_wrap=True)
-    table.add_column("Label", style="magenta")
-    table.add_column("Time Spend", justify="right", style="green")
-
-    session_data = getSessionData()
-    for session in session_data: 
-        session_date = datetime.datetime.fromisoformat(session["start"]).strftime("%x")
-        current_time = datetime.datetime.now()
-        time_diff = datetime.datetime.fromisoformat(session["end"]) - datetime.datetime.fromisoformat(session["start"])
-        hours, remainder = divmod(time_diff.total_seconds(), 3600)
+    def deltaToHMS(timedelta):
+        hours, remainder = divmod(timedelta.total_seconds(), 3600)
         minutes, seconds = divmod(remainder, 60)
-        time_difference = f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
+        return f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
+        
+    # list all weekly session inference
+    while SESSION_LIST == True:
+        os.system("clear")
 
-        table.add_row(session_date, session["label"], time_difference)
+        table = Table(title="User weekly performance")
+        table.add_column("Date", justify="right", style="cyan", no_wrap=True)
+        table.add_column("Label", style="magenta")
+        table.add_column("Time Spend", justify="right", style="green")
 
-    console.print(table)
-    print("Press enter to exit")
-    user_input = input()
-    if user_input or user_input == "":
+        total_time = datetime.timedelta(0)
+
+        session_data = getSessionData()
+        for session in session_data: 
+            session_date = datetime.datetime.fromisoformat(session["start"]).strftime("%x")
+            current_time = datetime.datetime.now()
+            time_diff = datetime.datetime.fromisoformat(session["end"]) - datetime.datetime.fromisoformat(session["start"])
+
+            time_difference = deltaToHMS(time_diff)
+            
+            total_time += time_diff
+
+            table.add_row(session_date, session["label"], time_difference)
+
+        console.print(table)
+        console.print("Total time spend: ", deltaToHMS(total_time), style="bold")
+        print("Press enter to exit")
+        user_input = input()
+        
         start_main()
