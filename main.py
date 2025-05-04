@@ -16,7 +16,7 @@ os.makedirs(data_dir, exist_ok=True)
 console = Console()
 
 os.system("clear")
-console.print("Welcome to FocusIT!\n", style="bold underline cyan")
+console.print("Welcome to FocusIT!\n", style="bold underline blue")
 
 def listActions():
     console.print("<l> to list your weekly activity")
@@ -87,7 +87,7 @@ collectGarbage() # clear up garbage if any
 
 # main session
 while MAIN == True:
-    console.print("Your command:", style="yellow")
+    console.print("Your command:", style="bold yellow")
     user_input = input()
 
     if user_input == "l" or user_input == "<l>":
