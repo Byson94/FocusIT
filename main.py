@@ -16,7 +16,7 @@ os.makedirs(data_dir, exist_ok=True)
 console = Console()
 
 os.system("clear")
-console.print("Welcome to FocusIT!\n", style="bold underline blue")
+console.print("Welcome to FocusIT!\n", style="bold underline cyan")
 
 def listActions():
     console.print("<l> to list your weekly activity")
@@ -94,7 +94,6 @@ while MAIN == True:
         os.system("clear")
         start_list()
     elif user_input == "s" or user_input == "<s>":
-        print("<session started>")
         start_save()
     elif user_input == "x" or user_input == "<x>":
         print("exiting...")
@@ -104,12 +103,12 @@ while MAIN == True:
 
     # recording session
     while SESSION_SAVE == True:
-        print("Give your session a name:")
+        console.print("Give your session a name:", style="bold green")
         session_name = input()
 
         if session_name:
             start_time = datetime.datetime.now()
-            print("Press enter when you are done.")
+            console.print("Press enter when you are done.", style="bold yellow")
             event_listener = input()
 
             if event_listener or event_listener == "":
@@ -153,7 +152,7 @@ while MAIN == True:
 
         console.print(table)
         console.print("Total time spend: ", deltaToHMS(total_time), style="bold")
-        print("Press enter to exit")
+        console.print("\nPress enter to exit", style="bold yellow")
         user_input = input()
         
         start_main()
