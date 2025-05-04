@@ -1,6 +1,6 @@
 # FocusIT
 
-Focusit is a simple program to keep track of the time you spend on a task.
+Focusit is a simple program to keep track of the time you spend on a task and analyze your weekly performance on the tasks you did.
 
 > NOTE: This program can be used only on unix based systems. If you use windows, the code will not work on your system.
 
