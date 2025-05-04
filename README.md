@@ -1,5 +1,8 @@
 # FocusIT
 
+![image](https://github.com/user-attachments/assets/214122d2-4af5-4a78-aee3-24180cdb2b82)
+
+
 Focusit is a simple program to keep track of the time you spend on a task and analyze your weekly performance on the tasks you did.
 
 > NOTE: This program can be used only on unix based systems. If you use windows, the code will not work on your system.
