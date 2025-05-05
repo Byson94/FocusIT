@@ -1,4 +1,5 @@
-# FocusIT
+# FocusIT <img src="https://github.com/user-attachments/assets/4112b67c-3762-4ec0-a879-6b55cb5d889f" width="25" height="25" style="border-radius: 8px;">
+
 
 ![image](https://github.com/user-attachments/assets/214122d2-4af5-4a78-aee3-24180cdb2b82)
 
